@@ -1,0 +1,13 @@
+ <div class="form-container">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <h1 class="title">Ingresar</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Ingresar">
+
+    </form>
+
+    <p> Quieres crear una cuenta? <a href="{% url 'registro' %}">Registrarse</a></p>
+ </div>

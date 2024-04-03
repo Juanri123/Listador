@@ -1,0 +1,10 @@
+<div class="form-container">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <a href="{% url 'tareas' %}"><button class="primary-button login-button">Regresar</button></a>
+    <form method="POST"> 
+        {% csrf_token %}
+        <p>Seguro quieres eliminar esta tarea? "{{Task}}"</p>
+        <input type="submit" value="Eliminar" />
+    </form>
+</div>

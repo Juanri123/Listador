@@ -1,0 +1,62 @@
+<div class="form-container">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    {% if request.user.is_authenticated %}
+    
+        <p>{{request.user}}</p>
+      
+    <form method="POST" action="{% url 'salir' %}">
+        {% csrf_token %}
+            <div  type="submit" class="button_slide Salir-button" > Salir </div>
+        <br /> <br /><br />
+    
+    </form>
+    {% else %}
+
+    <a href="{% url 'ingresar' %}">Ingresar</a>
+    {%  endif %}
+
+    
+
+
+
+    <hr>
+    <h1 class="title"> LISTA </h1>
+    <a href="{% url 'task-create' %}"><div class="wrapper">
+        <button>
+          Añadir tarea
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div></a>
+
+   
+
+   
+    <table>
+        <tr>
+            <th>tareas</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for task in object_list %}
+        <tr>
+
+
+            <td>{{task.titulo}}</td>
+            <td><a href="{% url 'tarea' task.id %}"><button class="primary-button login-button">Ver</button></a></td>
+            <td><a href="{% url 'task-update' task.id %}"><button class="primary-button login-button">Editar</button></a></td>
+            <td><a href="{% url 'task-delete' task.id %}"><button class="primary-button login-button">Eliminar</button></a></td>
+
+        </div>
+        
+
+            
+        </tr>
+        {% empty %}
+            <h3>No hay tareas en la lista</h3>
+        {% endfor %}
+</div>    
+</table>

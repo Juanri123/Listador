@@ -1,0 +1,11 @@
+<div class="form-container">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <h3> formulario tarea </h3>
+    <a href="{% url 'tareas' %}"><button class="primary-button login-button">Regresar</button></a>
+    <form method="POST" action=""> 
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="cargar" >
+    </form>
+</div>
